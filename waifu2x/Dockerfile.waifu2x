@@ -1,4 +1,4 @@
-FROM torch7
+FROM hvariant/torch7
 
 RUN apt-get update && apt-get install -y --no-install-recommends --force-yes \
   libsnappy-dev \
