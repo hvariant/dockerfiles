@@ -1,0 +1,25 @@
+FROM torch7
+
+RUN apt-get update && apt-get install -y --no-install-recommends --force-yes \
+  libsnappy-dev \
+  graphicsmagick \
+  libgraphicsmagick1-dev \
+  libssl-dev \
+  ca-certificates \
+  git && \
+  rm -rf /var/lib/apt/lists/*
+
+ENV PATH="/root/torch/install/bin:${PATH}"
+
+RUN \
+  luarocks install graphicsmagick && \
+  luarocks install lua-csnappy && \
+  luarocks install md5 && \
+  luarocks install uuid && \
+  luarocks install csvigo && \
+  PREFIX=$HOME/torch/install luarocks install turbo
+
+# suppress message `tput: No value for $TERM and no -T specified`
+ENV TERM xterm
+
+RUN cd /root/ && git clone --depth 1 https://github.com/nagadomi/waifu2x.git
