@@ -1,5 +1,7 @@
 FROM hvariant/torch7
 
+MAINTAINER Zhansong Li <lizhansong@hotmail.com>
+
 RUN apt-get update && apt-get install -y --no-install-recommends --force-yes \
   libsnappy-dev \
   graphicsmagick \
@@ -23,3 +25,7 @@ RUN \
 ENV TERM xterm
 
 RUN cd /root/ && git clone --depth 1 https://github.com/nagadomi/waifu2x.git
+
+EXPOSE 8812
+
+WORKDIR /root/waifu2x
