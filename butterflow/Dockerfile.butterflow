@@ -19,6 +19,6 @@ RUN /bin/bash -c "cd /root/ && git clone https://github.com/dthpham/butterflow.g
     && source bin/activate && echo \"/usr/lib/python2.7/dist-packages\" > lib/python2.7/site-packages/butterflow.pth \
     && deactivate && python setup.py install"
 
-ENV DEBIAN_FRONTEND newt
+ENV DEBIAN_FRONTEND dialog
 
 WORKDIR /root
